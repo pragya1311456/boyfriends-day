@@ -1,0 +1,8 @@
+{
+  "name": "Create Your Love Story ❤️",
+  "description": "An interactive romantic animated storybook and personalized love letter maker.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

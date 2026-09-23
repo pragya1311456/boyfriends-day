@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #c62845;
+  --primary-dark: #a11c34;
+  --primary-light: #ff4d6d;
+  --secondary: #ffffff;
+  --background: #fff5f7;
+  --background-subtle: #ffebee;
+  --text: #5a1f2d;
+  --text-muted: #8c3a4f;
+  --card-bg: #ffffff;
+  --border-color: rgba(198, 40, 69, 0.15);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.font-serif-romantic {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-handwriting {
+  font-family: 'Caveat', cursive;
+}
+
+/* Custom romantic subtle gradient backgrounds */
+.bg-romantic-pattern {
+  background-color: #fff5f7;
+  background-image: radial-gradient(rgba(198, 40, 69, 0.08) 1px, transparent 1px), radial-gradient(rgba(198, 40, 69, 0.04) 1px, #fff5f7 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+/* Candle flame flickering animation */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 8px #ff7b00) drop-shadow(0 0 16px #ffea00);
+  }
+  25% {
+    transform: scale(1.08, 0.95) rotate(2deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 10px #ff5100) drop-shadow(0 0 20px #ffea00);
+  }
+  50% {
+    transform: scale(0.96, 1.05) rotate(-2deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 7px #ff7b00) drop-shadow(0 0 14px #ffc400);
+  }
+  75% {
+    transform: scale(1.05, 0.98) rotate(1deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 9px #ff6600) drop-shadow(0 0 18px #ffea00);
+  }
+}
+
+.animate-flame {
+  animation: flameFlicker 0.6s infinite ease-in-out;
+  transform-origin: bottom center;
+}
+
+/* Floating Hearts Keyframes */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120px) scale(1.2) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-heart {
+  animation: floatUp 3s infinite ease-in;
+}
+
+/* Teddy gentle breathe */
+@keyframes teddyBreathe {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.01, 0.99);
+  }
+}
+
+.animate-teddy-breathe {
+  animation: teddyBreathe 2.4s infinite ease-in-out;
+}
+
+/* Teddy blowing cheeks */
+@keyframes puffCheeks {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15, 1.08);
+  }
+}
+
+.animate-puff {
+  animation: puffCheeks 0.5s ease-in-out infinite;
+}
+
+/* Wind blow lines */
+@keyframes blowWind {
+  0% {
+    opacity: 0;
+    transform: translateX(0) scaleX(0.2);
+  }
+  40% {
+    opacity: 0.8;
+    transform: translateX(20px) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(45px) scaleX(0.7);
+  }
+}
+
+.animate-wind {
+  animation: blowWind 0.8s infinite ease-out;
+}
+
+/* Polaroid realistic styling */
+.polaroid-card {
+  background: #ffffff;
+  box-shadow: 0 10px 25px -5px rgba(198, 40, 69, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.polaroid-card:hover {
+  transform: translateY(-6px) scale(1.03) rotate(0deg) !important;
+  box-shadow: 0 20px 30px -10px rgba(198, 40, 69, 0.22), 0 10px 15px -5px rgba(0, 0, 0, 0.12);
+  z-index: 20;
+}
+
+/* Custom Scrollbar in Red theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #fff5f7;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffb3c1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c62845;
+}
+
+/* Running character bounce & leg swing */
+@keyframes runBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px) scale(0.98, 1.02);
+  }
+}
+
+.animate-run-bounce {
+  animation: runBounce 0.35s infinite ease-in-out;
+}
+
+@keyframes legSwingA {
+  0%, 100% {
+    transform: rotate(18deg);
+  }
+  50% {
+    transform: rotate(-18deg);
+  }
+}
+
+@keyframes legSwingB {
+  0%, 100% {
+    transform: rotate(-18deg);
+  }
+  50% {
+    transform: rotate(18deg);
+  }
+}
+
+.animate-leg-a {
+  animation: legSwingA 0.35s infinite ease-in-out;
+  transform-origin: top center;
+}
+
+.animate-leg-b {
+  animation: legSwingB 0.35s infinite ease-in-out;
+  transform-origin: top center;
+}
+
+/* Sweet kiss pulse & romantic heart bloom */
+@keyframes kissHeartBloom {
+  0% {
+    transform: scale(0.6) translateY(0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2) translateY(-14px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4) translateY(-32px);
+  }
+}
+
+.animate-kiss-bloom {
+  animation: kissHeartBloom 1.2s infinite ease-out;
+}
+
