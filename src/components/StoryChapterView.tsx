@@ -259,51 +259,30 @@ export const StoryChapterView: React.FC<StoryChapterViewProps> = ({
               />
 
               {/* Quick Pose Switcher Buttons */}
-              <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5 p-1 bg-rose-50/80 rounded-full border border-rose-100 max-w-full">
-                <button
-                  type="button"
-                  onClick={() => setActivePose('holding-hands')}
-                  className={`px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${
-                    activePose === 'holding-hands'
-                      ? 'bg-[#c62845] text-white shadow-xs'
-                      : 'text-[#8c3a4f] hover:text-[#c62845] hover:bg-white'
-                  }`}
-                >
-                  👫 Holding Hands
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActivePose('hugging')}
-                  className={`px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${
-                    activePose === 'hugging'
-                      ? 'bg-[#c62845] text-white shadow-xs'
-                      : 'text-[#8c3a4f] hover:text-[#c62845] hover:bg-white'
-                  }`}
-                >
-                  🤗 Warm Hug
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActivePose('kiss')}
-                  className={`px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${
-                    activePose === 'kiss'
-                      ? 'bg-[#c62845] text-white shadow-xs'
-                      : 'text-[#8c3a4f] hover:text-[#c62845] hover:bg-white'
-                  }`}
-                >
-                  💋 Sweet Kiss
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActivePose('bench')}
-                  className={`px-3 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer ${
-                    activePose === 'bench'
-                      ? 'bg-[#c62845] text-white shadow-xs'
-                      : 'text-[#8c3a4f] hover:text-[#c62845] hover:bg-white'
-                  }`}
-                >
-                  🪑 Cozy Bench
-                </button>
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5 p-1 bg-rose-50/80 rounded-2xl border border-rose-100 max-w-full">
+                {[
+                  { id: 'holding-hands', label: 'Hands', emoji: '👫' },
+                  { id: 'hugging', label: 'Warm Hug', emoji: '🤗' },
+                  { id: 'hug-side', label: 'Side Hug', emoji: '🫂' },
+                  { id: 'kiss', label: 'Kiss', emoji: '💋' },
+                  { id: 'kiss-forehead', label: 'Forehead Kiss', emoji: '🌸' },
+                  { id: 'cheek-to-cheek', label: 'Cheek to Cheek', emoji: '🥰' },
+                  { id: 'bench', label: 'Cozy Bench', emoji: '🪑' }
+                ].map((poseItem) => (
+                  <button
+                    key={poseItem.id}
+                    type="button"
+                    onClick={() => setActivePose(poseItem.id as CouplePoseType)}
+                    className={`px-2.5 py-1 text-xs font-semibold rounded-full transition-all cursor-pointer whitespace-nowrap flex items-center gap-1 ${
+                      activePose === poseItem.id
+                        ? 'bg-[#c62845] text-white shadow-xs'
+                        : 'text-[#8c3a4f] hover:text-[#c62845] hover:bg-white'
+                    }`}
+                  >
+                    <span>{poseItem.emoji}</span>
+                    <span>{poseItem.label}</span>
+                  </button>
+                ))}
               </div>
 
               <p className="text-xs font-medium text-[#8c3a4f] italic mt-3">

@@ -33,6 +33,15 @@ export interface TimelineItem {
   badge?: string;
 }
 
+export type CouplePoseType =
+  | 'holding-hands'
+  | 'hugging'
+  | 'hug-side'
+  | 'kiss'
+  | 'kiss-forehead'
+  | 'cheek-to-cheek'
+  | 'bench';
+
 export interface StoryData {
   id: string;
   yourName: string;
@@ -54,7 +63,7 @@ export interface StoryData {
   finalLetterSignoff: string;
   finalSecretMessage: string;
   enableHeartRain?: boolean;
-  coupleStyle?: 'holding-hands' | 'hugging' | 'kiss' | 'bench';
+  coupleStyle?: CouplePoseType;
   createdAt?: number;
   updatedAt?: number;
 }

@@ -333,25 +333,33 @@ export const WebsiteHome: React.FC<WebsiteHomeProps> = ({
 
                 {/* Couple Pose Selector */}
                 <div className="pt-4 pb-2">
-                  <div className="grid grid-cols-4 gap-1.5 p-1 bg-rose-50/70 rounded-2xl border border-rose-100">
+                  <div className="flex items-center justify-between text-[11px] font-bold text-[#8c3a4f] mb-1 px-1">
+                    <span>Pose Style:</span>
+                    <span className="text-[#c62845] font-semibold">Tap to switch</span>
+                  </div>
+                  <div className="grid grid-cols-4 sm:grid-cols-7 gap-1 p-1 bg-rose-50/70 rounded-2xl border border-rose-100">
                     {[
                       { id: 'holding-hands', label: 'Hands', emoji: '👫' },
                       { id: 'hugging', label: 'Hug', emoji: '🤗' },
+                      { id: 'hug-side', label: 'Side', emoji: '🫂' },
                       { id: 'kiss', label: 'Kiss', emoji: '💋' },
+                      { id: 'kiss-forehead', label: 'Forehead', emoji: '🌸' },
+                      { id: 'cheek-to-cheek', label: 'Cheek', emoji: '🥰' },
                       { id: 'bench', label: 'Bench', emoji: '🪑' }
                     ].map((p) => (
                       <button
                         key={p.id}
                         type="button"
                         onClick={() => setHeroPose(p.id as CouplePoseType)}
-                        className={`py-1.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 transition-all cursor-pointer whitespace-nowrap ${
+                        className={`py-1.5 px-1 rounded-xl text-xs font-semibold flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1 transition-all cursor-pointer whitespace-nowrap ${
                           heroPose === p.id
                             ? 'bg-[#c62845] text-white shadow-xs'
-                            : 'text-[#8c3a4f] hover:text-[#c62845]'
+                            : 'text-[#8c3a4f] hover:text-[#c62845] hover:bg-rose-100/50'
                         }`}
+                        title={p.label}
                       >
-                        <span>{p.emoji}</span>
-                        <span className="hidden xs:inline">{p.label}</span>
+                        <span className="text-sm">{p.emoji}</span>
+                        <span className="text-[10px] sm:text-xs font-medium">{p.label}</span>
                       </button>
                     ))}
                   </div>

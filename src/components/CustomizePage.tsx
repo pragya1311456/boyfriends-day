@@ -482,28 +482,80 @@ export const CustomizePage: React.FC<CustomizePageProps> = ({
             </div>
 
             {/* Cute Couple Pose Picker */}
-            <div className="p-4 rounded-2xl bg-white border border-[#c62845]/20 shadow-xs space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">👫</span>
+            <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#c62845]/20 shadow-xs space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 rounded-xl bg-rose-100/80 text-[#c62845] flex items-center justify-center text-xl shrink-0">
+                    👫
+                  </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#c62845] font-serif-romantic">
-                      Cute Couple Illustration 👫❤️
+                    <h3 className="text-sm font-bold text-[#c62845] font-serif-romantic flex items-center gap-1.5">
+                      <span>Couple Illustration Pose</span>
+                      <Sparkles className="w-3.5 h-3.5 fill-[#c62845]" />
                     </h3>
                     <p className="text-xs text-[#8c3a4f]">
-                      Choose your favorite romantic couple pose
+                      Choose your favorite romantic hug, kiss, cuddle, or handhold pose
                     </p>
                   </div>
                 </div>
+
+                <span className="text-[11px] font-semibold text-[#c62845] bg-rose-50 px-2.5 py-1 rounded-full border border-rose-100 self-start sm:self-auto">
+                  7 Poses Available
+                </span>
               </div>
 
-              {/* Pose Option Buttons */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+              {/* Categorized Pose Buttons */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 pt-1">
                 {[
-                  { id: 'holding-hands', label: 'Holding Hands', emoji: '👫' },
-                  { id: 'hugging', label: 'Warm Hug', emoji: '🤗' },
-                  { id: 'kiss', label: 'Sweet Kiss', emoji: '💋' },
-                  { id: 'bench', label: 'Cozy Bench', emoji: '🪑' }
+                  {
+                    id: 'holding-hands',
+                    name: 'Holding Hands',
+                    category: 'Classic',
+                    emoji: '👫',
+                    tagline: 'Heart to heart'
+                  },
+                  {
+                    id: 'hugging',
+                    name: 'Warm Hug',
+                    category: 'Hug',
+                    emoji: '🤗',
+                    tagline: 'Tight frontal hug'
+                  },
+                  {
+                    id: 'hug-side',
+                    name: 'Side Hug',
+                    category: 'Hug',
+                    emoji: '🫂',
+                    tagline: 'Arm on shoulder'
+                  },
+                  {
+                    id: 'kiss',
+                    name: 'Sweet Kiss',
+                    category: 'Kiss',
+                    emoji: '💋',
+                    tagline: 'Gentle lips kiss'
+                  },
+                  {
+                    id: 'kiss-forehead',
+                    name: 'Forehead Kiss',
+                    category: 'Kiss',
+                    emoji: '🌸',
+                    tagline: 'Tender & pure'
+                  },
+                  {
+                    id: 'cheek-to-cheek',
+                    name: 'Cheek to Cheek',
+                    category: 'Cuddle',
+                    emoji: '🥰',
+                    tagline: 'Squishy selfie'
+                  },
+                  {
+                    id: 'bench',
+                    name: 'Cozy Bench',
+                    category: 'Romantic',
+                    emoji: '🪑',
+                    tagline: 'Side by side'
+                  }
                 ].map((item) => {
                   const isSelected = (formData.coupleStyle || 'holding-hands') === item.id;
                   return (
@@ -511,26 +563,49 @@ export const CustomizePage: React.FC<CustomizePageProps> = ({
                       key={item.id}
                       type="button"
                       onClick={() => handleFieldChange('coupleStyle', item.id as CouplePoseType)}
-                      className={`p-2.5 rounded-xl border text-xs font-semibold flex flex-col items-center gap-1 transition-all cursor-pointer ${
+                      className={`p-3 rounded-2xl border text-left flex flex-col justify-between transition-all cursor-pointer relative ${
                         isSelected
-                          ? 'bg-rose-50 border-[#c62845] text-[#c62845] shadow-xs ring-1 ring-[#c62845]'
-                          : 'bg-white border-rose-100 text-[#8c3a4f] hover:border-rose-300'
+                          ? 'bg-rose-50/90 border-[#c62845] text-[#c62845] shadow-xs ring-2 ring-[#c62845]/40 scale-[1.02]'
+                          : 'bg-white border-rose-100 text-[#5a1f2d] hover:border-rose-300 hover:bg-rose-50/30'
                       }`}
                     >
-                      <span className="text-xl">{item.emoji}</span>
-                      <span>{item.label}</span>
+                      <div className="flex items-center justify-between w-full mb-1.5">
+                        <span className="text-2xl">{item.emoji}</span>
+                        <span
+                          className={`text-[9px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded-md ${
+                            isSelected
+                              ? 'bg-[#c62845] text-white'
+                              : 'bg-rose-50 text-[#8c3a4f]'
+                          }`}
+                        >
+                          {item.category}
+                        </span>
+                      </div>
+                      <div>
+                        <div className="font-bold text-xs font-serif-romantic flex items-center gap-1">
+                          <span>{item.name}</span>
+                          {isSelected && <Heart className="w-3 h-3 fill-[#c62845] text-[#c62845]" />}
+                        </div>
+                        <div className="text-[10px] text-[#8c3a4f] mt-0.5 leading-tight">
+                          {item.tagline}
+                        </div>
+                      </div>
                     </button>
                   );
                 })}
               </div>
 
               {/* Live Interactive Preview */}
-              <div className="pt-2 flex flex-col items-center bg-rose-50/60 rounded-xl p-3 border border-rose-100/80">
+              <div className="pt-3 flex flex-col items-center bg-rose-50/60 rounded-2xl p-4 border border-rose-100">
+                <span className="text-[11px] font-bold text-[#8c3a4f] uppercase tracking-wider mb-1 flex items-center gap-1">
+                  <Sparkles className="w-3.5 h-3.5 text-[#c62845]" />
+                  <span>Live Selected Pose Preview</span>
+                </span>
                 <CartoonCoupleSVG
                   personAName={formData.yourName || 'Me'}
                   personBName={formData.partnerName || 'You'}
                   pose={formData.coupleStyle || 'holding-hands'}
-                  scale={0.88}
+                  scale={0.92}
                   interactive={true}
                 />
               </div>
